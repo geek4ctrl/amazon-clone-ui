@@ -4,23 +4,6 @@ import Home from "../components/Home/Home";
 export const ProductsContext = createContext(null);
 export const ProductsDispatchContext = createContext(null);
 
-export function ProductsProvider({ children }) {
-
-    const [products, dispatch] = useReducer(
-        productsReducer,
-        state.basket
-    );
-
-    return (
-        <ProductsContext.Provider value={state.initialProducts}>
-            <ProductsDispatchContext.Provider value={dispatch}>
-                <Home />
-            </ProductsDispatchContext.Provider>
-        </ProductsContext.Provider>
-    );
-
-}
-
 const state = {
     initialProducts: [
         {
@@ -53,27 +36,46 @@ const state = {
         },
     ],
     basket: [],
-    user: {}
+    user: {},
 }
 
-function productsReducer(products, action) {
-    // console.log('Show me the product: ', products);
-    // console.log('Show me the action: ', action);
+export function ProductsProvider({ children }) {
+
+    const [products, dispatch] = useReducer(
+        productsReducer,
+        state
+    );
+
+    return (
+        <ProductsContext.Provider value={products}>
+            <ProductsDispatchContext.Provider value={dispatch}>
+                <Home />
+            </ProductsDispatchContext.Provider>
+        </ProductsContext.Provider>
+    );
+
+}
+
+function productsReducer(state = state, action) {
 
     switch (action.type) {
 
         case 'ADD_TO_BASKET': {
-            return [...products, {
-                id: action.item.id,
-                image: action.item.image,
-                price: action.item.price,
-                rating: action.item.rating,
-                title: action.item.title,
-            }];
+
+            return {
+                ...state,
+                basket: [...state.basket, {
+                    id: action.item.id,
+                    image: action.item.image,
+                    price: action.item.price,
+                    rating: action.item.rating,
+                    title: action.item.title,
+                }]
+            };
         }
 
         case 'REMOVE_FROM_BASKET': {
-            return products.filter(product => product.id !== action.item.id);
+            return state.filter(product => product.id !== action.item.id);
         }
 
     }

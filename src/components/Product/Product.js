@@ -32,7 +32,7 @@ function Product() {
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2} style={{ marginTop: "1rem" }}>
 
-                {products.map((product) => {
+                {products.initialProducts.map((product) => {
                     return (
                         <Grid item xs={3} style={{ textAlign: "-webkit-center" }}>
                             <Card sx={{ maxWidth: 345 }}>
