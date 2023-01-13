@@ -1,6 +1,12 @@
+import { useContext } from 'react';
 import './Header.css';
 
+import { ProductsContext, ProductsDispatchContext } from '../../context/ProductsContext';
+
 function Header() {
+
+    const totalItems = useContext(ProductsContext);
+
     return (
         <div>
             <nav class="bg-blue border-gray-200 px-2 sm:px-4 py-2.5 dark:bg-gray-900" style={{ backgroundColor: "#131921" }}>
@@ -32,11 +38,11 @@ function Header() {
                             <li>
                                 <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" style={{ color: "white" }}>Amazon Prime</a>
                             </li>
-                            <li>
-
+                            <li style={{ display: "flex", color: "white" }}>
                                 <a href="#" class="block py-2 pl-3 pr-4 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent" style={{ color: "white" }}>                                <span class="material-symbols-outlined">
                                     shopping_cart_checkout
-                                </span></a>
+                                </span> </a>
+                                {totalItems.basket.length}
                             </li>
                         </ul>
                     </div>
