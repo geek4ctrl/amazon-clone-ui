@@ -1,27 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/Home/Home';
-import { useState } from 'react';
+import { Component, useReducer, useState } from 'react';
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export const basketContext = React.createContext();
-export const user = React.createContext();
+import { ProductsProvider } from './context/ProductsContext';
 
-function App() {
-
-  const [basket, setUserBasket] = useState([]);
-  const [userInfo, setUser] = useState({});
-
-  function total() {
-    return basket.length
-  }
+export default function App() {
 
   return (
-    <Home />
+    <ProductsProvider>
+      <Home />
+    </ProductsProvider>
   );
 }
 
-export default App;
