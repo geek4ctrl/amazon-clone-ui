@@ -12,6 +12,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import { useContext } from 'react';
+import { ProductsContext, ProductsDispatchContext } from '../../context/ProductsContext';
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -21,38 +23,10 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-function Product(products) {
+function Product() {
 
-    products = [
-        {
-            id: 1,
-            title: 'Gaming Accessories',
-            image: 'https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673202752/photo-1546435770-a3e426bf472b_br5qvt.avif',
-            price: '598',
-            rating: '5'
-        },
-        {
-            id: 2,
-            title: 'Gaming Accessories',
-            image: 'https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673202752/photo-1546435770-a3e426bf472b_br5qvt.avif',
-            price: '598',
-            rating: '4'
-        },
-        {
-            id: 3,
-            title: 'Gaming Accessories',
-            image: 'https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673202752/photo-1546435770-a3e426bf472b_br5qvt.avif',
-            price: '598',
-            rating: '3'
-        },
-        {
-            id: 4,
-            title: 'Gaming Accessories',
-            image: 'https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673202752/photo-1546435770-a3e426bf472b_br5qvt.avif',
-            price: '598',
-            rating: '4'
-        },
-    ]
+    const products = useContext(ProductsContext);
+    const dispatch = useContext(ProductsDispatchContext);
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -79,24 +53,12 @@ function Product(products) {
                                     />
                                 </CardContent>
                                 <CardActions style={{ justifyContent: "center" }}>
-                                    <Button size="small" variant="contained" style={{ backgroundColor: "orange" }}>Add to Basket</Button>
+                                    <Button size="small" variant="contained" style={{ backgroundColor: "orange" }} onClick={() => { dispatch({ type: 'ADD_TO_BASKET', item: { id: product.id, title: product.title, image: product.image, price: product.price, rating: product.rating } }) }}>Add to Basket</Button>
                                 </CardActions>
                             </Card>
                         </Grid>
                     )
                 })}
-
-
-
-                {/* <Grid item xs={3}>
-                    <Item>xs=4</Item>
-                </Grid>
-                <Grid item xs={3}>
-                    <Item>xs=4</Item>
-                </Grid>
-                <Grid item xs={3}>
-                    <Item>xs=8</Item>
-                </Grid> */}
 
             </Grid>
         </Box>
