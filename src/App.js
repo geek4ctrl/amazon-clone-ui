@@ -1,19 +1,18 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from './components/Home/Home';
-import { Component, useReducer, useState } from 'react';
-
 import React from 'react';
-import ReactDOM from 'react-dom';
+import Home from './views/Home/Home';
 
 import { ProductsProvider } from './context/ProductsContext';
+
+import { BrowserRouter, Route } from "react-router-dom";
 
 export default function App() {
 
   return (
-    <ProductsProvider>
-      <Home />
-    </ProductsProvider>
+    <div>
+      <ProductsProvider>
+      </ProductsProvider>
+    </div>
   );
 }
 

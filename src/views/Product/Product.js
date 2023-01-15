@@ -1,5 +1,5 @@
 import './Product.css';
-import Header from '../Header/Header';
+import Header from '../../components/Header/Header';
 
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -30,11 +30,14 @@ function Product() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
+
+            <img src="https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673177067/BRND_MTH21_SADLPDesktop_1453x363_Final_nolocale_PVD7436_Canada_elmk9g.jpg" alt="Smiley face" style={{ width: "100%" }} />
+
             <Grid container spacing={2} style={{ marginTop: "1rem" }}>
 
-                {products.initialProducts.map((product) => {
+                {products.initialProducts.map((product, id) => {
                     return (
-                        <Grid item xs={3} style={{ textAlign: "-webkit-center" }}>
+                        <Grid key={id} item xs={3} style={{ textAlign: "-webkit-center" }}>
                             <Card sx={{ maxWidth: 345 }}>
                                 <CardContent>
                                     <Typography gutterBottom variant="h6" component="div">

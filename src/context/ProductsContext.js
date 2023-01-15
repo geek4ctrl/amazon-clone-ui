@@ -1,5 +1,11 @@
 import { createContext, useReducer } from "react";
-import Home from "../components/Home/Home";
+
+import Header from "../components/Header/Header";
+import Home from "../views/Home/Home";
+import Product from "../views/Product/Product";
+import Cart from "../views/Cart/Cart";
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 export const ProductsContext = createContext(null);
 export const ProductsDispatchContext = createContext(null);
@@ -49,7 +55,13 @@ export function ProductsProvider({ children }) {
     return (
         <ProductsContext.Provider value={products}>
             <ProductsDispatchContext.Provider value={dispatch}>
-                <Home />
+                <Header />
+                <BrowserRouter>
+                    <Routes>
+                        <Route path="/" element={<Product />} />
+                        <Route path="/Cart" element={<Cart />} />
+                    </Routes>
+                </BrowserRouter>
             </ProductsDispatchContext.Provider>
         </ProductsContext.Provider>
     );
