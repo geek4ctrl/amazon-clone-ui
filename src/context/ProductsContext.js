@@ -56,12 +56,12 @@ export function ProductsProvider({ children }) {
         <ProductsContext.Provider value={products}>
             <ProductsDispatchContext.Provider value={dispatch}>
                 <Header />
-                <BrowserRouter>
-                    <Routes>
-                        <Route path="/" element={<Product />} />
-                        <Route path="/Cart" element={<Cart />} />
-                    </Routes>
-                </BrowserRouter>
+
+                <Routes>
+                    <Route exact path="/" element={<Product />} />
+                    <Route path="/Cart" element={<Cart />} />
+                </Routes>
+
             </ProductsDispatchContext.Provider>
         </ProductsContext.Provider>
     );

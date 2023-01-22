@@ -9,5 +9,8 @@ import { AllRoutes } from './routes';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <App />
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+
 );
