@@ -4,6 +4,7 @@ import Header from "../components/Header/Header";
 import Home from "../views/Home/Home";
 import Product from "../views/Product/Product";
 import Cart from "../views/Cart/Cart";
+import Login from "../views/Login/Login";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -60,6 +61,7 @@ export function ProductsProvider({ children }) {
                 <Routes>
                     <Route exact path="/" element={<Product />} />
                     <Route path="/Cart" element={<Cart />} />
+                    <Route path="/Login" element={<Login />} />
                 </Routes>
 
             </ProductsDispatchContext.Provider>
