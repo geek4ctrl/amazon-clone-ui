@@ -27,6 +27,14 @@ function Cart() {
     const products = useContext(ProductsContext);
     const dispatch = useContext(ProductsDispatchContext);
 
+    let totalPrice = 0;
+
+    if (products.basket) {
+        products.basket.map(product => {
+            totalPrice += product.price;
+        })
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }}>
 
@@ -40,7 +48,7 @@ function Cart() {
                     <Card sx={{ maxWidth: 345 }}>
                         <CardContent>
                             <Typography gutterBottom variant="h6" component="div">
-                                Subtotal (4 items): $1448.94
+                                Subtotal ({products?.basket?.length} items): ${totalPrice}
                             </Typography>
                             <Typography gutterBottom component="p">
                                 This order contains a gift
@@ -83,7 +91,7 @@ function Cart() {
                                     />
                                 </CardContent>
                                 <CardActions style={{ justifyContent: "center" }}>
-                                    <Button size="small" variant="contained" style={{ backgroundColor: "orange" }} onClick={() => { dispatch({ type: 'ADD_TO_BASKET', item: { id: product.id, title: product.title, image: product.image, price: product.price, rating: product.rating } }) }}>Remove from Basket</Button>
+                                    <Button size="small" variant="contained" style={{ backgroundColor: "orange" }} onClick={() => { dispatch({ type: 'REMOVE_FROM_BASKET', item: { id: product.id, title: product.title, image: product.image, price: product.price, rating: product.rating } }) }}>Remove from Basket</Button>
                                 </CardActions>
                             </Card>
                         </Grid>

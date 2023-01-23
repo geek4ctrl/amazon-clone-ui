@@ -17,28 +17,28 @@ const state = {
             id: 1,
             title: 'Gaming Accessories',
             image: 'https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673202752/photo-1546435770-a3e426bf472b_br5qvt.avif',
-            price: '598',
+            price: 598,
             rating: '5'
         },
         {
             id: 2,
             title: 'Gaming Accessories',
             image: 'https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673202752/photo-1546435770-a3e426bf472b_br5qvt.avif',
-            price: '598',
+            price: 598,
             rating: '4'
         },
         {
             id: 3,
             title: 'Gaming Accessories',
             image: 'https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673202752/photo-1546435770-a3e426bf472b_br5qvt.avif',
-            price: '598',
+            price: 598,
             rating: '3'
         },
         {
             id: 4,
             title: 'Gaming Accessories',
             image: 'https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673202752/photo-1546435770-a3e426bf472b_br5qvt.avif',
-            price: '598',
+            price: 598,
             rating: '4'
         },
     ],
