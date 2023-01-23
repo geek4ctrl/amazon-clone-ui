@@ -50,6 +50,8 @@ function Login({ setToken }) {
             password
         });
         setToken(token);
+
+        localStorage.setItem('username', username);
     }
 
     return (
