@@ -1,12 +1,12 @@
-import { createContext, useReducer } from "react";
-
+import { createContext, useReducer, useState } from "react";
 import Header from "../components/Header/Header";
 import Home from "../views/Home/Home";
 import Product from "../views/Product/Product";
 import Cart from "../views/Cart/Cart";
 import Login from "../views/Login/Login";
-
+import Dashboard from "../views/Dashboard/Dashboard";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import useToken from "../components/useToken";
 
 export const ProductsContext = createContext(null);
 export const ProductsDispatchContext = createContext(null);
@@ -46,12 +46,26 @@ const state = {
     user: {},
 }
 
+
 export function ProductsProvider({ children }) {
+
+    const { token, setToken } = useToken();
 
     const [products, dispatch] = useReducer(
         productsReducer,
         state
     );
+
+    if (!token) {
+        return (
+            <ProductsContext.Provider value={products}>
+                <ProductsDispatchContext.Provider value={dispatch}>
+                    <Header />
+                    <Login setToken={setToken} />
+                </ProductsDispatchContext.Provider>
+            </ProductsContext.Provider>
+        );
+    }
 
     return (
         <ProductsContext.Provider value={products}>
@@ -62,6 +76,7 @@ export function ProductsProvider({ children }) {
                     <Route exact path="/" element={<Product />} />
                     <Route path="/Cart" element={<Cart />} />
                     <Route path="/Login" element={<Login />} />
+                    <Route path="/Dashboard" element={<Dashboard />} />
                 </Routes>
 
             </ProductsDispatchContext.Provider>
