@@ -86,11 +86,9 @@ export function ProductsProvider({ children }) {
 }
 
 function productsReducer(state = state, action) {
-
     switch (action.type) {
 
         case 'ADD_TO_BASKET': {
-
             return {
                 ...state,
                 basket: [...state.basket, {
@@ -104,7 +102,10 @@ function productsReducer(state = state, action) {
         }
 
         case 'REMOVE_FROM_BASKET': {
-            return state.filter(product => product.id !== action.item.id);
+            return {
+                ...state,
+                basket: [...state.basket.filter(product => product.id !== action.item.id)]
+            };
         }
 
     }

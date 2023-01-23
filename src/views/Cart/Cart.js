@@ -38,7 +38,7 @@ function Cart() {
     return (
         <Box sx={{ flexGrow: 1 }}>
 
-            <Grid container spacing={2} style={{ marginTop: "1rem" }}>
+            <Grid container spacing={2} style={{ paddingTop: "2rem", paddingLeft: "3rem" }}>
 
                 <Grid item xs={9} style={{ textAlign: "left" }}>
                     <img src="https://res.cloudinary.com/dhqvb8wbn/image/upload/v1673795179/1500x250PCbanneFeb22_srnb6y.jpg" alt="Smiley face" style={{ width: "100%" }} />
@@ -70,7 +70,7 @@ function Cart() {
 
                 <hr />
 
-                {products.basket.map((product, id) => {
+                {products?.basket?.map((product, id) => {
                     return (
                         <Grid key={id} item xs={12} style={{ textAlign: "left" }}>
                             <Card sx={{ maxWidth: 345 }}>
@@ -91,7 +91,7 @@ function Cart() {
                                     />
                                 </CardContent>
                                 <CardActions style={{ justifyContent: "center" }}>
-                                    <Button size="small" variant="contained" style={{ backgroundColor: "orange" }} onClick={() => { dispatch({ type: 'REMOVE_FROM_BASKET', item: { id: product.id, title: product.title, image: product.image, price: product.price, rating: product.rating } }) }}>Remove from Basket</Button>
+                                    <Button size="small" variant="contained" style={{ backgroundColor: "orange" }} onClick={() => { dispatch({ type: 'REMOVE_FROM_BASKET', item: { id: product.id } }) }}>Remove from Basket</Button>
                                 </CardActions>
                             </Card>
                         </Grid>

@@ -46,7 +46,7 @@ function Header() {
                                         shopping_cart_checkout
                                     </span>
                                 </Link>
-                                {totalItems.basket.length}
+                                {totalItems?.basket?.length}
                             </span>
 
                         </ul>
