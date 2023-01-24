@@ -60,7 +60,7 @@ export function ProductsProvider({ children }) {
         return (
             <ProductsContext.Provider value={products}>
                 <ProductsDispatchContext.Provider value={dispatch}>
-                    <Header />
+                    <Header token={token} />
                     <Login setToken={setToken} />
                 </ProductsDispatchContext.Provider>
             </ProductsContext.Provider>
@@ -70,7 +70,7 @@ export function ProductsProvider({ children }) {
     return (
         <ProductsContext.Provider value={products}>
             <ProductsDispatchContext.Provider value={dispatch}>
-                <Header />
+                <Header token={token} />
 
                 <Routes>
                     <Route exact path="/" element={<Product />} />
